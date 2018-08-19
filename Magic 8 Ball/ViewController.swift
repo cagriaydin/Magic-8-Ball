@@ -10,9 +10,14 @@ import UIKit
 
 class ViewController: UIViewController {
 
+    @IBOutlet weak var imageView: UIImageView!
+    
+    var randomBallNumber : Int = 0
+    let ballArray = ["ball1", "ball2", "ball3", "ball4", "ball5"]
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        newBallImage()
     }
 
     override func didReceiveMemoryWarning() {
@@ -20,6 +25,14 @@ class ViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
 
-
+    @IBAction func askButtonPressed(_ sender: UIButton) {
+        newBallImage()
+    }
+    
+    func newBallImage(){
+        randomBallNumber = Int(arc4random_uniform(5))
+        imageView.image = UIImage(named: ballArray[randomBallNumber])
+    }
+    
 }
 
